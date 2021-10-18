@@ -14,10 +14,10 @@ for i in range(1, n + 1):
 # To pop from the left, has to rotate -k + 1.
 while len(dq) > 0:
     dq.rotate(-k + 1)
-    print(dq)
+    #print(dq)
     result.append(dq.popleft())
 
-# set output according to the given example (<3, 6, 2, 7, 5, 1, 4>).
+# set output to match the given example (<3, 6, 2, 7, 5, 1, 4>).
 # join cannot iterate through int instances, has to convert to string.
 answer = ", ".join(map(str, result))
 print(f"<{answer}>")
