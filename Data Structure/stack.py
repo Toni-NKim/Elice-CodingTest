@@ -1,40 +1,30 @@
-class Stack:
-    def __init__(self) :
-        self.stack = []
-
-    def push(self, v):
-        # insert v to the stack(last in first out)
-        self.stack.append(v)
-        return self.stack
-    
-    def pop(self):
-        return self.stack.pop(-1) if len(self.stack) > 0 else -1
-
-    def size(self):
-        return len(self.stack)
-    
-    def empty(self):
-        return 1 if len(self.stack) == 0 else 0
-
-    def top(self):
-        return self.stack[-1] if self.empty() == 0 else -1
+# int(input()) produces timeout error(시간 초과).
+# using sys.stdin.readline() saves time dramatically.
+from sys import stdin
 
 # n = number of instructions
-n = int(input())
+n = int(stdin.readline())
+stack = []
 
 for i in range(n):
-    s = Stack()
-    # assing instruction, value to variables
-    call = input().split()
+    # assigning instruction, value to variables.
+    call = list(stdin.readline().split())
     if len(call) > 1:
         ins, val = call
-        val = int(val)
-        method = getattr(s, ins)
-        
-        if method(val) != None:
-            print(method(val))
-        
+        if ins == "push": 
+            stack.append(val)
+    
+    # aside from push, all instructions are single-worded.
     else:
         ins = call[0]
-        method = getattr(s, ins)
-        print(method())
+        if ins == "pop": 
+            # as in return, can combine print on the front of shorthand if statements
+            print(stack.pop(-1) if len(stack) != 0 else -1)
+        if ins == "size": 
+            print(len(stack))
+        if ins == "empty":
+            print(1 if len(stack) == 0 else 0)
+        if ins == "top":
+            print(stack[-1] if len(stack) != 0 else -1)
+
+# took 84ms.
