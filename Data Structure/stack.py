@@ -18,7 +18,7 @@ for i in range(n):
     else:
         ins = call[0]
         if ins == "pop": 
-            # as in return, can combine print on the front of shorthand if statements
+            # as in return, can combine print to the front of shorthand if statements
             print(stack.pop(-1) if len(stack) != 0 else -1)
         if ins == "size": 
             print(len(stack))
@@ -28,3 +28,4 @@ for i in range(n):
             print(stack[-1] if len(stack) != 0 else -1)
 
 # took 84ms.
+# takeaway -> should start using sys.stdin.readline() from now on.
